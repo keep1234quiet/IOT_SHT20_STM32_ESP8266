@@ -34,8 +34,8 @@
 #include "esp8266.h"
 
 
-#define API_KEY     "yrysoM6vjUZbRkD7UIXD5C7ud6Y="		//需要定义为用户自己的参数
-#define DEV_ID      "525567666"							//需要定义为用户自己的参数
+#define API_KEY     "Td0oeLpRep4XQTdaaaaaLqdagBg="		//需要定义为用户自己的参数
+#define DEV_ID      "525566666"							          //需要定义为用户自己的参数
 
 /**
   * @brief      利用I2C接口，采集温湿度传感器的值，使用HTTP协议上传到OneNET
@@ -46,6 +46,7 @@
 uint32_t HTTP_PostPkt(char *pkt, char *key, char *devid, char *dsid, char *val);
 int main(void)
 {
+	  uint16_t for_count = 2;
     uint16_t temp, humi;    //温湿度
     char HTTP_Buf[400];     //HTTP报文缓存区
     char tempStr[5];       //字符串格式温度
@@ -63,9 +64,22 @@ int main(void)
     while(1)
     {
         /* 获取温湿度 */
+			  /*
         SHT2x_MeasureHM(SHT20_Measurement_T_HM, &temp);
         mDelay(500);
         SHT2x_MeasureHM(SHT20_Measurement_RH_HM, &humi);
+			  */
+			
+				if(for_count < 10){
+						temp = for_count;
+					  humi = for_count-2;
+					  for_count++;
+				}
+			  else{
+					  for_count = 2;
+				}
+				
+				
 
         /* 转化为字符串形式 */
         sprintf(tempStr, "%d", temp);
@@ -89,7 +103,7 @@ int main(void)
         mDelay(1000);
         printf("rcv response:\r\n%s\r\n", usart2_rcv_buf);
 
-        mDelay(5000);
+        mDelay(3000);
     }
 }
 

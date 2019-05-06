@@ -2,7 +2,7 @@
 #define CWMODE      "AT+CWMODE=3\r\n"		//STA+AP模式
 #define RST         "AT+RST\r\n"
 #define CIFSR       "AT+CIFSR\r\n"
-#define CWJAP       "AT+CWJAP=\"Your-WIFI-Name\",\"WIFI-Password\"\r\n"	//
+#define CWJAP       "AT+CWJAP=\"Your-WIFI-Name\",\"Your-Wifi-Password\"\r\n"	//
 //#define CIPSTART    "AT+CIPSTART=\"TCP\",\"183.230.40.39\",876\r\n"	//EDP服务器 183.230.40.39/876
 #define CIPSTART    "AT+CIPSTART=\"TCP\",\"183.230.40.33\",80\r\n"		//HTTP服务器183.230.40.33/80
 #define CIPMODE0    "AT+CIPMODE=0\r\n"		//非透传模式
